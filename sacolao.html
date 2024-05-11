@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supermercado São Francisco</title>
+    <style>
+        body {
+            background-color: #2c5234;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url(imagens/Mercado.jpg);
+            background-size: cover;
+            background-position: center;
+            color: white; /* cor do texto */
+            text-align: center; /* centraliza o texto */
+            padding: 40px; /* espaçamento do texto em relação às bordas */
+        }
+        h1 {
+            color: #ff0000;
+            text-align: center;
+            margin-top: 15px;
+        }
+        h2, h3 {
+            color: #ffd700;
+            text-align: center;
+        }
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #2c5234;
+            text-align: center;
+        }
+        li {
+            display: inline;
+        }
+        li a {
+            display: inline-block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        li a:hover {
+            background-color: #4a8059;
+        }
+        .img-container {
+            text-align: center;
+            margin-top: 10px;
+        }
+        img, video {
+            max-width: 70%; /* Ajustado para 70% da largura da tela */
+            height: auto;
+            display: block;
+            margin: 0 auto; /* Centralizado horizontalmente */
+        }
+        .container {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px;
+        }
+        .social-media {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .social-media a {
+            margin: 0 10px;
+            color: #ffffff;
+            text-decoration: none;
+        }
+        .social-media a:hover {
+            color: #ffd700;
+        }
+        footer {
+            background-color: #2c5234;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Supermercado <span style="color: #ff0000;">São Francisco</span></h1>
+    <h2>Todo dia mais barato!</h2>
+    <h3>Planaltina-GO</h3>
+    <ul>
+        <li><a href="#sacolao" onclick="showProducts('sacolao')">Sacolão</a></li>
+        <li><a href="#acougue" onclick="showProducts('acougue')">Açougue</a></li>
+        <li><a href="#padaria" onclick="showProducts('padaria')">Padaria</a></li>
+    </ul>
+    
+    <div id="sacolao" class="img-container" style="display: none;">
+        <img src="imagens/sacolao1.jpg" alt="sacolao">
+        <p>Preço: R$ 5,00</p>
+    </div>
+    <div id="acougue" class="img-container" style="display: none;">
+        <img src="imagens/acougue1.jpg" alt="acougue">
+        <p>Preço: R$ 10,00</p>
+    </div>
+    <div id="padaria" class="img-container" style="display: none;">
+        <img src="imagens/bolo.jpg" alt="bolo">
+        <p>Preço: R$ 15,00</p>
+        <img src="imagens/pao frances.jpg" alt="pao_frances">
+        <p>Preço: R$ 2,00</p>
+    </div>
+    
+    <div class="social-media">
+        <footer>
+            <p>Endereço: QDA 8 MR 12 LT 03 ST NORTE (Avenida Lagoa) Planaltina-GO</p>
+            <a href="https://maps.app.goo.gl/Y7E4FdViNvdrdUgj7" target="_blank">Localização</a>
+            <a href="https://www.instagram.com/supermercado_sao_francisco?igshid=MXBwcm54cmRpNHZtNw==" target="_blank">Instagram</a>
+            <a href="https://www.facebook.com/profile.php?id=100085615774345" target="_blank">Facebook</a>
+            <a href="https://api.whatsapp.com/send?phone=SEUNUMERO" target="_blank">WhatsApp</a>
+        </footer>
+    </div>
+
+    <script>
+        function showProducts(category) {
+            // Oculta todos os elementos com a classe 'img-container'
+            var containers = document.getElementsByClassName('img-container');
+            for (var i = 0; i < containers.length; i++) {
+                containers[i].style.display = 'none';
+            }
+
+            // Exibe apenas o elemento com o ID correspondente à categoria clicada
+            document.getElementById(category).style.display = 'block';
+        }
+    </script>
+</body>
+</html>
+
