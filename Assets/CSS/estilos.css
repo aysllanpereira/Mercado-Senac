@@ -1,0 +1,74 @@
+/* cabeçalho */
+header nav{
+    background-color: #ffffff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.247);
+    color: black;
+    box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.13);
+}
+
+.img img {
+    height: 70vh;
+    margin-top: 150px;
+}
+
+.carousel-caption h3 {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 15%;
+    background-color: #ffffffa6;
+    border-radius: 8px;
+    color: #ffffff;
+    text-shadow: 5px 5px 3px rgba(0, 0, 0, 0.74);
+}
+
+.text h2 {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.card {
+    box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.11);
+    border: 1px solid rgba(0, 0, 0, 0.212);
+    height: 100%; 
+}
+
+.card .card-img-top {
+    object-fit: cover; 
+}
+
+.card-title {
+    display: flex;
+    justify-content: center;
+}
+
+.card-title h5 {
+    font-weight: bold;
+}
+
+.card-text {
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+}
+
+a.btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+
+.carousel-control-prev-icon {
+    background-color: rgba(47, 79, 79, 0.788);
+}
+
+.carousel-control-next-icon {
+    background-color: rgba(47, 79, 79, 0.788);
+}
+
+footer {
+    margin-top: 50px;
+}
+
