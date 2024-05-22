@@ -54,8 +54,9 @@ header nav{
     display: block;
     margin: 0 auto;
     width: 150px;
-    height: 220px;
-    margin-bottom: 15px;
+    height: 200px;
+    object-fit: contain;
+    margin-bottom: 8px;
 }
 
 .descricao {

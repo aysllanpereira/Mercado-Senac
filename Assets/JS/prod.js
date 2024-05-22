@@ -34,7 +34,7 @@ async function consultProd(event) {
             createDiv.appendChild(primeiroP);
 
             const segundoP = document.createElement("p");
-            segundoP.innerText = prod.preco;
+            segundoP.innerText = `R$ ${prod.preco}`;
             createDiv.appendChild(segundoP);
 
             const button = document.createElement("button");
