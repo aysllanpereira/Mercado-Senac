@@ -1,67 +1,91 @@
-// função para pesquisar o produto
-function pesquisarProduto() {
-    const pegarPes = document.getElementById("pesquisarProd");
-    if(pegarPes.value) {
-        pesquisarProduto(pegarPes.value);
-    }
+// url da api
+const apiURL = "http://localhost:3000/api/produto";
 
+// função para pesquisar o produto
+async function pesquisarProduto() {
+    // pega o valor digitado no input
+    let nome = document.getElementById("pesquisarProd").value;
+    // inicia o array vazio
+    let products = [];
+    // verifica se não está vazio e dá um push do produto para o array
+    if (nome) {
+        try {
+            const resName = await fetch(`${apiURL}?nome=${nome}`);
+            const prod = await resName.json();
+            if (prod) products.push(prod);
+        } catch (error) {
+            console.error("Erro:", error);
+        }
+    } else {
+        products = await consultProd();
+    }
+    // mostra os produtos
+    displayProd(products);
+    // limpa o campo de pesquisa
     document.getElementById("pesquisarProd").value = "";
 }
 
-// url da api
-let url = "http://localhost:3000/api/produto";
-
-// função para requisitar a api (local host)
-async function consultProd(nome) {
-    // pegando a div com a class "prod-inline"
-    const prodDiv = document.querySelector(".prod-inline");
-    // deixando vazia
-    prodDiv.innerHTML = "";
-
-    if(nome) {
-        url = `http://localhost:3000/api/produto?nome=${nome}`;
-        const prodGet = await fetch(url);
-        const products = await prodGet.json();
-        console.log("produtos", products)
+// função para consultar os produtos
+async function consultProd() {
+    try {
+        // requesita a api
+        const response = await fetch(apiURL);
+        // transforma em json
+        const prodData = await response.json();
+        //retorna os dados
+        return prodData;
+    } catch (error) {
+        // mensagem de erro
+        console.error("Erro", error);
     }
+}
 
-    // requisitando a api
-
-    // pegando os produtos
-    if(products) {
+// função para exibir os produtos
+function displayProd(products) {
+    // pega a div principal
+    const prodDiv = document.querySelector(".prod-inline");
+    // limpa a div
+    prodDiv.innerHTML = "";
+    if (products) {
         products.forEach(prod => {
-            // cria a primeira div
+            // cria a div com a class prod
             const createDiv = document.createElement("div");
-            createDiv.classList.add("prod")
+            createDiv.classList.add("prod");
 
-            // criando a tag img
+            // cria a imagem
             const createImg = document.createElement("img");
             createImg.src = prod.foto;
-            // createImg.style.width = "100%";
-            // createImg.style.height = "220px";
             createDiv.appendChild(createImg);
 
-            // criando outra div com a descrição do produto
+            // cria outra div com a class descricao
             const createDes = document.createElement("div");
             createDes.classList.add("descricao");
 
-            // criando os parágrafos
+            // cria o primeiro parágrafo com a descrição 
             const primeiroP = document.createElement("p");
             primeiroP.innerText = prod.nome;
-            createDiv.appendChild(primeiroP);
+            createDes.appendChild(primeiroP);
 
+            // cria o segundo parágrafo com a descrição
             const segundoP = document.createElement("p");
             segundoP.innerText = `R$ ${prod.preco}`;
-            createDiv.appendChild(segundoP);
+            createDes.appendChild(segundoP);
 
+            // cria o button do carrinho
             const button = document.createElement("button");
             button.innerText = "Adicionar ao carrinho";
             button.classList.add("btn");
             button.classList.add("btn-primary");
-            createDiv.appendChild(button);
+            createDes.appendChild(button);
 
             createDiv.appendChild(createDes);
             prodDiv.appendChild(createDiv);
         });
     }
 }
+
+// evento de click para exibir o produto pesquisado
+document.getElementById("pesquisar").addEventListener("click", async () => {
+    const products = await consultProd();
+    displayProd(products);
+});
