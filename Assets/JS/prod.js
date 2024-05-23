@@ -1,14 +1,31 @@
+// função para pesquisar o produto
+function pesquisarProduto() {
+    const pegarPes = document.getElementById("pesquisarProd");
+    if(pegarPes.value) {
+        pesquisarProduto(pegarPes.value);
+    }
+
+    document.getElementById("pesquisarProd").value = "";
+}
+
+// url da api
+let url = "http://localhost:3000/api/produto";
+
 // função para requisitar a api (local host)
-async function consultProd(event) {
+async function consultProd(nome) {
     // pegando a div com a class "prod-inline"
     const prodDiv = document.querySelector(".prod-inline");
     // deixando vazia
     prodDiv.innerHTML = "";
 
+    if(nome) {
+        url = `http://localhost:3000/api/produto?nome=${nome}`;
+        const prodGet = await fetch(url);
+        const products = await prodGet.json();
+        console.log("produtos", products)
+    }
+
     // requisitando a api
-    const prodGet = await fetch("http://localhost:3000/api/produto");
-    const products = await prodGet.json();
-    console.log("produtos", products)
 
     // pegando os produtos
     if(products) {
