@@ -40,10 +40,34 @@ async function consultProd() {
     }
 }
 
+// função para exibir o home
+function exibirHome() {
+    const home = document.getElementById("home");
+    if(home.click) {
+        const carrosel = document.getElementById("carrosel");
+        const descText = document.getElementById("idDesc");
+        const desc = document.getElementById("prods");
+        carrosel.style.display = "block";
+        descText.style.display = "block";
+        desc.style.display = "none";
+    } 
+}
+
 // função para exibir os produtos
 function displayProd(products) {
     // pega a div principal
     const prodDiv = document.querySelector(".prod-inline");
+    
+    // ocultando o home e exibindo os produtos
+    const descProd = document.getElementById("descProd");
+    const desc = document.getElementById("prods");
+    const carrosel = document.getElementById("carrosel");
+    const descText = document.getElementById("idDesc");
+    carrosel.style.display = "none";
+    descText.style.display = "none";
+    desc.style.display = "block";
+    descProd.style.display = "block";
+    
     // limpa a div
     prodDiv.innerHTML = "";
     if (products) {

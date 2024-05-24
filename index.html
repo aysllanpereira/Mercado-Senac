@@ -23,7 +23,7 @@
                     <div class="navbar-nav mx-auto">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a href="#section1" class="nav-link" aria-current="page" id="home">Home</a>
+                                <a href="#section1" class="nav-link" aria-current="page" id="home" onclick="exibirHome()">Home</a>
                             </li>
                             <li class="nav-item">
                                 <a href="#section2" class="nav-link" id="pesquisar" onclick="consultProd()">Produtos</a>
@@ -43,7 +43,8 @@
     </header>
 
     <main>
-        <section class="carrossel">
+
+        <section class="carrossel" id="carrosel">
             <div class="container" id="slider-container">
                 <div class="carousel slide" id="slider" data-bs-ride="carousel">
                     <div class="carousel-indicators">
@@ -105,17 +106,20 @@
             </div>
         </div>
 
-        <div class="container">
-            <div class="row">
-                <div class="text">
-                    <h2>Produtos</h2>
-                </div>
+        <div class="desc" id="idDesc">
+            <h3>Sobre Nós</h3>
+            <div class="texto">
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero facilis, corrupti neque possimus eligendi consequuntur provident eaque rerum nobis nihil? Neque odit sit placeat, ex soluta quae fuga consectetur similique! Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum dolore sint ex veniam officia recusandae debitis dignissimos similique quod vero molestiae asperiores, eveniet est, unde mollitia fugiat quos accusamus nihil. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellendus temporibus expedita exercitationem, ducimus itaque maiores, enim cumque veritatis eligendi mollitia ipsa esse perferendis, minima possimus voluptatem impedit harum nam rerum? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Neque esse dolores ipsam eveniet dolore quia magnam praesentium, qui, vero accusamus voluptatibus autem vitae harum iusto nisi placeat iste similique cumque.</p> 
             </div>
         </div>
 
-        <section>
+        <section id="prods">
+            <div class="text" id="descProd" style="display: none;">
+                <h2>Produtos</h2>
+            </div>
             <div class="prod-inline"></div>
         </section>
+
     </main>
 
     <footer class="container-fluid text-white bg-dark">
