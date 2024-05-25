@@ -98,6 +98,8 @@ function displayProd(products) {
             button.innerText = "Adicionar ao carrinho";
             button.classList.add("btn");
             button.classList.add("btn-primary");
+            button.setAttribute("onclick", "adicionarCarrinho(products)")
+            // productElement.appendChild(button);
             createDes.appendChild(button);
 
             createDiv.appendChild(createDes);
@@ -111,3 +113,6 @@ document.getElementById("pesquisar").addEventListener("click", async () => {
     const products = await consultProd();
     displayProd(products);
 });
+
+
+
