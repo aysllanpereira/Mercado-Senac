@@ -96,12 +96,14 @@ function displayProd(products) {
             // cria o button do carrinho
             const button = document.createElement("button");
             button.innerText = "Adicionar ao carrinho";
-            button.classList.add("btn");
-            button.classList.add("btn-primary");
-            button.setAttribute("onclick", "adicionarCarrinho(products)")
-            // productElement.appendChild(button);
+            button.classList.add("btn", "btn-primary");
+            button.setAttribute("id", prod.id);
+            button.setAttribute("nome", prod.nome);
+            button.setAttribute("preco", prod.preco);
+            button.onclick = () => addProd(button);
+    
+            
             createDes.appendChild(button);
-
             createDiv.appendChild(createDes);
             prodDiv.appendChild(createDiv);
         });
