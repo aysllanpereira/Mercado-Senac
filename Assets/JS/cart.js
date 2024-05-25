@@ -1,100 +1,113 @@
-// função para exibir o carrinho de compras
-document.addEventListener('DOMContentLoaded', function() {
-    const cartIcon = document.getElementById('cart-icon');
-    const cartModal = new bootstrap.Modal(document.getElementById('cart-modal'));
+// inicia vazio
+let cart = [];
 
-    cartIcon.addEventListener('click', function() {
-        cartModal.show();
-    });
-});
+// Função para adicionar produto ao carrinho
+function addProd(button) {
+    const prodId = button.getAttribute("id");
+    const prodNome = button.getAttribute("nome");
+    const prodPreco = parseFloat(button.getAttribute("preco"));
 
+    // verifica se existe produto no carrinho
+    const produtoExistente = cart.find(item => item.id === prodId);
 
+    // se o produto existir, ele incrementa mais 1. Se não adiciona no carrinho
+    if (produtoExistente) {
+        produtoExistente.quantidade += 1;
+    } else {
+        cart.push({
+            id: prodId,
+            nome: prodNome,
+            preco: prodPreco,
+            quantidade: 1
+        });
+    }
+    // atualiza o carrinho e salva no localStorage
+    atualizarCart();
+    salvarStorage()
+}
 
+// Função para atualizar a exibição do carrinho
+function atualizarCart() {
+    // pego a área do carrinho no html 
+    const items = document.getElementById("cart-items");
+    const cartTotal = document.getElementById("cart-total");
 
+    // zero os itens
+    items.innerHTML = "";
 
-// tentar add no carrinho
-
-/*function atualizarCarrinho() {
-    document.getElementById('cart-count').innerText = cart.reduce((acc, item) => acc + item.quantidade, 0);
-    const cartTableBody = document.querySelector('#cart-table tbody');
-    cartTableBody.innerHTML = '';
+    // o total inicia em zero
     let total = 0;
 
+    // crio a lista com os produtos, acrescento o total e formato o valor para duas casas após a virgula
     cart.forEach(item => {
-        const valorTotal = item.quantidade * item.precoUnitario;
-        total += valorTotal;
-
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-            <td>${item.nome}</td>
-            <td>${item.quantidade}</td>
-            <td>R$${item.precoUnitario.toFixed(2)}</td>
-            <td>R$${valorTotal.toFixed(2)}</td>
+        const li = document.createElement("li");
+        li.classList.add("list-group-item");
+        li.innerHTML = `
+            ${item.nome} - R$ ${item.preco} x ${item.quantidade}
+            <button class="btn btn-danger btn-sm float-end" onclick="removerProd('${item.id}')">X</button>
+            <button class="btn btn-secondary btn-sm float-end" onclick="decrementarQuantidade('${item.id}')">-</button>
+            <button class="btn btn-secondary btn-sm float-end" onclick="incrementarQuantidade('${item.id}')">+</button>
         `;
-        cartTableBody.appendChild(tr);
+
+        items.appendChild(li);
+
+        total += item.preco * item.quantidade;
     });
 
-    const totalElement = document.getElementById('total-price');
-    totalElement.innerText = total.toFixed(2); 
-} */
+    cartTotal.innerText = total.toFixed(2);
+}
 
-
-function adicionarCarrinho(products) {
-    document.getElementsByClassName("btn-close");
-    const existingProduct = cart.find(item => item.nome === products.nome);
-    if (existingProduct) {
-        existingProduct.quantidade += 1;
-    } else {
-        console.log()
-        cart.push({ nome: products.nome, quantidade: 1, precoUnitario: products.preco }); 
+// Função para incrementar a quantidade do produto no carrinho
+function incrementarQuantidade(prodId) {
+    // verifico se tem o produto no carrinho, se tiver aumento/incremento e atualizo o carrinho
+    const produtoExistente = cart.find(item => item.id === prodId);
+    if (produtoExistente) {
+        produtoExistente.quantidade += 1;
+        atualizarCart();
+        salvarStorage()
     }
-    atualizarCarrinho();
-    localStorage.setItem('carrinho', JSON.stringify(cart))
 }
 
-/* function limparCarrinho() {
-    cart = [];
-    document.getElementById('cart-count').innerText = '0';
-    atualizarCarrinho();
-    localStorage.removeItem('carrinho')
-}
-
-async function finalizarCompra() {
-    if (cart.length > 0) {
-        const nome = prompt("Digite seu nome:");
-        const telefone = prompt("Digite seu telefone:");
-        try {
-            const response = await fetch('http://localhost:3000/api/pedido', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({nome, telefone, carrinho: cart})
-            });
-
-            if (response.ok) {
-                alert("Compra finalizada com sucesso!");
-                limparCarrinho();
-            } else {
-                alert("Ocorreu um erro ao finalizar a compra. Tente novamente mais tarde.");
-            }
-        } catch (error) {
-            console.error('Erro ao finalizar compra:', error);
-            alert("Ocorreu um erro ao processar sua compra. Tente novamente mais tarde.");
+// Função para decrementar a quantidade do produto no carrinho
+function decrementarQuantidade(prodId) {
+    // verifico se tem o produto no carrinho, se tiver diminuo/decremento e atualizo o carrinho
+    const produtoExistente = cart.find(item => item.id === prodId);
+    if (produtoExistente) {
+        produtoExistente.quantidade -= 1;
+        if (produtoExistente.quantidade === 0) {
+            removerProd(prodId);
+        } else {
+            atualizarCart();
+            salvarStorage()
         }
-    } else {
-        alert("Seu carrinho está vazio. Adicione itens antes de finalizar a compra.");
     }
 }
 
-function carregarCarrinho(){
-    const carStorage = localStorage.getItem('carrinho')
-    if (carStorage){
-        cart = JSON.parse(carStorage)
-        atualizarCarrinho()
-    }else{
-        cart = []
+// Função para remover produto do carrinho
+function removerProd(prodId) {
+    cart = cart.filter(item => item.id !== prodId);
+    atualizarCart();
+    salvarStorage()
+}
+
+// salvar no localStorage
+function salvarStorage() {
+    localStorage.setItem('cart', JSON.stringify(cart));
+}
+
+// jogar o produto pro localStorage
+function jogarNoLocalStorage() {
+const cartStorage = localStorage.getItem("cart");
+    if (cartStorage) {
+        cart = JSON.parse(cartStorage);
+        atualizarCart();
     }
 }
 
-window.onload = carregarCarrinho */
+window.onload = jogarNoLocalStorage;
+
+// Função para exibir o carrinho de compras
+document.getElementById("cart-icon").addEventListener("click", () => {
+    const modal = new bootstrap.Modal(document.getElementById("cart-modal"));
+    modal.show();
+});
