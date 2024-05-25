@@ -21,23 +21,26 @@ header nav{
     text-shadow: 5px 5px 3px rgba(0, 0, 0, 0.74);
 }
 
+/* descrição */
+
 .desc {
     display: flex;
     flex-direction: column;
+    padding: 50px 0;
 }
 
 .desc h3 {
     display: flex;
     justify-content: center;
-    margin-top: 50px;
-    margin-bottom: 50px;
+    /* margin-top: 50px; */
+    margin-bottom: 50px; 
 }
 
 .texto {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 50px;
+    /* margin-bottom: 50px; */
 }
 
 .texto p{
@@ -45,11 +48,13 @@ header nav{
     width: 900px;
 }
 
+/* produtos */
+
 .text h2 {
     display: flex;
     justify-content: center;
-    margin-top: 150px;
-    margin-bottom: -120px;
+    margin-top: 140px;
+    margin-bottom: -170px;
 }
 
 .prod-inline {
@@ -60,6 +65,7 @@ header nav{
     justify-content: center;
     align-items: center;
     margin-top: 150px;
+    padding: 50px 0;
 }
 
 .prod-inline .prod {
@@ -82,7 +88,8 @@ header nav{
     width: 150px;
     height: 200px;
     object-fit: contain;
-    margin-bottom: 8px;
+    margin-top: 20px;
+    margin-bottom: 15px;
 }
 
 .descricao {
@@ -103,7 +110,7 @@ button {
     max-width: 220px;
 }
 
-footer {
+/* footer {
     margin-top: 50px;
-}
+} */
 

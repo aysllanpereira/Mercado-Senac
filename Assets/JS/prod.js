@@ -43,14 +43,12 @@ async function consultProd() {
 // função para exibir o home
 function exibirHome() {
     const home = document.getElementById("home");
-    if(home.click) {
-        const carrosel = document.getElementById("carrosel");
-        const descText = document.getElementById("idDesc");
-        const desc = document.getElementById("prods");
-        carrosel.style.display = "block";
-        descText.style.display = "block";
-        desc.style.display = "none";
-    } 
+    const carrosel = document.getElementById("carrosel");
+    const descText = document.getElementById("idDesc");
+    const desc = document.getElementById("prods");
+    carrosel.style.display = "block";
+    descText.style.display = "block";
+    desc.style.display = "none";    
 }
 
 // função para exibir os produtos
