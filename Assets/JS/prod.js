@@ -45,9 +45,11 @@ function exibirHome() {
     const home = document.getElementById("home");
     const carrosel = document.getElementById("carrosel");
     const descText = document.getElementById("idDesc");
+    const loc = document.getElementById("loc");
     const desc = document.getElementById("prods");
     carrosel.style.display = "block";
     descText.style.display = "block";
+    loc.style.display = "block";
     desc.style.display = "none";    
 }
 
@@ -61,8 +63,10 @@ function displayProd(products) {
     const desc = document.getElementById("prods");
     const carrosel = document.getElementById("carrosel");
     const descText = document.getElementById("idDesc");
+    const loc = document.getElementById("loc");
     carrosel.style.display = "none";
     descText.style.display = "none";
+    loc.style.display = "none";
     desc.style.display = "block";
     descProd.style.display = "block";
     

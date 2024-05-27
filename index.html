@@ -7,14 +7,14 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="assets/CSS/estilos.css">
     <link rel="shortcut icon" href="Assets/IMG/carrinho-de-supermercado.png" type="image/x-icon">
-    <title>Mercado Senac</title>
+    <title>Supermercado Família Feliz</title>
 </head>
 <body>
     <header id="section1">
         <nav class="navbar navbar-expand-lg fixed-top" id="navbar">
             <div class="container py-3">
                 <a href="#" class="navbar-brand">
-                    <span>Supermercado</span>
+                    <span>Supermercado FF</span>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-items" aria-controls="navbar-items" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="bi bi-list"></i>
@@ -35,7 +35,7 @@
                     </div>
                     <form class="d-flex">
                         <input class="form-control me-2" type="text" placeholder="Procurar produto" id="pesquisarProd">
-                        <button class="btn btn-primary" type="button" onclick="pesquisarProduto()">Procurar</button>
+                        <button class="btn btn-dark" type="button" onclick="pesquisarProduto()">Procurar</button>
                     </form>
                 </div>
             </div>
@@ -117,30 +117,47 @@
         </section>
 
         <!-- descrição -->
-        <div class="desc" id="idDesc">
-            <h3>Sobre Nós</h3>
-            <div class="texto">
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero facilis, corrupti neque possimus eligendi consequuntur 
-                    provident eaque rerum nobis nihil? Neque odit sit placeat, ex soluta quae fuga consectetur similique! Lorem ipsum 
-                    dolor sit amet consectetur adipisicing elit. Ipsum dolore sint ex veniam officia recusandae debitis dignissimos similique 
-                    quod vero molestiae asperiores, eveniet est, unde mollitia fugiat quos accusamus nihil. Lorem ipsum dolor sit amet 
-                    consectetur, adipisicing elit. Repellendus temporibus expedita exercitationem, ducimus itaque maiores, enim cumque
-                     veritatis eligendi mollitia ipsa esse perferendis, minima possimus voluptatem impedit harum nam rerum? Lorem ipsum 
-                     dolor, sit amet consectetur adipisicing elit. Neque esse dolores ipsam eveniet dolore quia magnam praesentium, qui,
-                      vero accusamus voluptatibus autem vitae harum iusto nisi placeat iste similique cumque.</p> 
+        <div class="desc container" id="idDesc">
+            <div class="row align-items-center">
+                <h3 class="text-center">Bem-vindo ao Supermercado Família Feliz!</h3>
+                <div class="col-md-6">
+                    <div class="texto">
+                        <p>Desde 1995, temos oferecido produtos de qualidade e um atendimento acolhedor. Iniciamos como uma pequena mercearia de bairro e crescemos mantendo nossos valores de confiança e serviço excelente. Nosso compromisso é a satisfação de toda a família, com uma ampla seleção de produtos frescos e orgânicos em um ambiente agradável. Agradecemos a confiança e continuamos dedicados a servir você e sua família com amor e cuidado. Venha nos visitar e sinta a diferença</p> 
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <img src="Assets/IMG/pexels-greta-hoffman-9706144.jpg" alt="Família" class="img-fluid">
+                </div>
+            </div>
+        </div>
+
+        <!-- localização -->
+        <div class="loc container" id="loc">
+            <div class="row align-items-center">
+                <h3 class="text-center" id="text">Nossa Localização</h3>
+                <div class="col-md-6">
+                    <iframe
+                    width="100%"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7476.4115143508725!2d-54.58602051703828!3d-20.45674056051272!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9486e8954ac0b10d%3A0x7149aba0cb5688b8!2sShopping%20Campo%20Grande!5e0!3m2!1sen!2sbr!4v1688840244482!5m2!1sen!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+                </div>
+                <div class="col-md-6">
+                    <p>Endereço: Rua 200, Brasília-DF</p>
+                    <p>Estamos mais perto do que imaginam! &#128521</p>
+                </div>
             </div>
         </div>
 
     </main>
 
     <!-- rodapé -->
-    <footer class="container-fluid text-white bg-dark">
+    <footer class="container-fluid">
         <div class="row pt-5 pb-5 align-items-start justify-content-center">
             <section class="col-md-4 text-center">
                 <h5>Endereço</h5>
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a href="" class="nav-link text-white"><i class="bi bi-geo-alt"></i>Rua 200, Brasília-DF</a>
+                        <a href="" class="nav-link"><i class="bi bi-geo-alt"></i>Rua 200, Brasília-DF</a>
                     </li>
                 </ul>
             </section>
@@ -148,13 +165,13 @@
                 <h5>Atendimento</h5>
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a href="#" class="nav-link text-white"><i class="bi bi-telephone"></i> Telefone</a>
+                        <a href="#" class="nav-link"><i class="bi bi-telephone"></i> Telefone</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link text-white"><i class="bi bi-whatsapp"></i> Whatsapp</a>
+                        <a href="#" class="nav-link"><i class="bi bi-whatsapp"></i> Whatsapp</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link text-white"><i class="bi bi-chat-dots"></i> Fale Conosco</a>
+                        <a href="#" class="nav-link"><i class="bi bi-chat-dots"></i> Fale Conosco</a>
                     </li>
                 </ul>
             </section>
@@ -162,10 +179,10 @@
                 <h5>Redes Sociais</h5>
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a href="#" class="nav-link text-white"><i class="bi bi-instagram"></i> Instagram</a>
+                        <a href="#" class="nav-link"><i class="bi bi-instagram"></i> Instagram</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link text-white"><i class="bi bi-facebook"></i> Facebook</a>
+                        <a href="#" class="nav-link"><i class="bi bi-facebook"></i> Facebook</a>
                     </li>
                 </ul>
             </section>
