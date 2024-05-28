@@ -23,7 +23,7 @@ function addProd(button) {
     }
     // atualiza o carrinho e salva no localStorage
     atualizarCart();
-    salvarStorage()
+    salvarStorage();
 }
 
 // Função para atualizar a exibição do carrinho
@@ -31,6 +31,8 @@ function atualizarCart() {
     // pego a área do carrinho no html 
     const items = document.getElementById("cart-items");
     const cartTotal = document.getElementById("cart-total");
+    // quantidade de produtos no carrinho
+    const qntProd = document.getElementById("prodCart").innerText = cart.reduce((contator, item) => contator + item.quantidade, 0);
 
     // zero os itens
     items.innerHTML = "";
@@ -105,6 +107,34 @@ const cartStorage = localStorage.getItem("cart");
 }
 
 window.onload = jogarNoLocalStorage;
+
+// finalizar as compras 
+// function comprar() {
+//     // const divDados = document.getElementById("dados");
+//     const numberWhats = "5561998701721";
+//     // mensagem
+//     const message = ``
+
+    
+        
+//             const createDiv = document.createElement("div");
+//             createDiv.classList.add("form");
+            
+//             const form = document.createElement("form");
+//             createDiv.appendChild(form);
+
+//             const label = document.createElement("label");
+//             form.appendChild(label);
+
+//             const input1 = document.createElement("input");
+//             form.appendChild(input1);
+
+//             const label2 = document.createElement("label");
+//             form.appendChild(label2)
+
+
+
+// }
 
 // Função para exibir o carrinho de compras
 document.getElementById("cart-icon").addEventListener("click", () => {
