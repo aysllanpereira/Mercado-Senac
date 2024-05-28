@@ -29,7 +29,7 @@
                                 <a href="#section2" class="nav-link" id="pesquisar" onclick="consultProd()">Produtos</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link" id="cart-icon">Carrinho <i class="bi bi-cart3"></i></a>
+                                <a href="#" class="nav-link" id="cart-icon">Carrinho <i class="bi bi-cart3"></i>(<span id="prodCart">0</span>)</a>
                             </li>
                         </ul>
                     </div>
@@ -102,11 +102,13 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                        <button type="button" class="btn btn-primary" id="checkout-btn">Finalizar Compra</button>
+                        <button type="button" class="btn btn-primary" id="checkout-btn" onclick="comprar()">Finalizar Compra</button>
                     </div>
                 </div>
             </div>
         </div>
+
+        <div class="dados"></div>
 
         <!-- área de produtos -->
         <section id="prods" style="display: none;">
