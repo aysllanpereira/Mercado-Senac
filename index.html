@@ -99,10 +99,21 @@
                         <ul id="cart-items" class="list-group"></ul>
                         <hr>
                         <div>Total: R$ <span id="cart-total">0.00</span></div>
+                        <form id="checkout-form" style="display: none;">
+                            <div class="mb-3">
+                                <label for="user-name" class="form-label">Nome:</labe>
+                                <input type="text" name="nome" id="user-name" class="form-control" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="user-name" class="form-label">Endereço:</label>
+                                <input type="text" name="nome" id="user-address" class="form-control" required>
+                            </div>
+                        </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                        <button type="button" class="btn btn-primary" id="checkout-btn" onclick="comprar()">Finalizar Compra</button>
+                        <button type="button" class="btn btn-primary" id="checkout-btn" onclick="mostrarFormulario()">Comprar</button>
+                        <button type="button" class="btn btn-success" id="confirm-btn" style="display: none;" onclick="comprar()">Confirmar Compra</button>
                     </div>
                 </div>
             </div>

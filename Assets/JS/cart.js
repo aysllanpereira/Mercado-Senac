@@ -108,33 +108,44 @@ const cartStorage = localStorage.getItem("cart");
 
 window.onload = jogarNoLocalStorage;
 
+// mostrar o formulário de nome e endereço
+function mostrarFormulario() {
+    const form = document.getElementById("checkout-form").style.display = "block";
+    const button = document.getElementById("confirm-btn").style.display = "block";
+    const button2 = document.getElementById("checkout-btn").style.display = "none";
+}
+
 // finalizar as compras 
-// function comprar() {
-//     // const divDados = document.getElementById("dados");
-//     const numberWhats = "5561998701721";
-//     // mensagem
-//     const message = ``
+function comprar() {
+    const name = document.getElementById("user-name").value;
+    const addres = document.getElementById("user-address").value;
+    // console.log("nome = ", name)
+    // console.log("endereço = ", addres)
 
+    if(!name || !addres) {
+        alert("Por favor, preencha os dados solicitados!");
+        return
+    }
+
+    const number = "5561998701721";
+    let message = `Olá! Me chamo ${name}, resido no ndereço: ${addres}. %0A Comprei os seguintes produtos no seu Supermercado: `;
+
+    cart.forEach(item => {
+        message += `${item.nome} - R$${item.preco} x ${item.quantidade}\n`;
+    });
+
+    message += `\nTotal - R$${document.getElementById("cart-total").innerText}.%0A Gostaria que fossem entregues no meu endereço, desde já, agradeço!`;
     
-        
-//             const createDiv = document.createElement("div");
-//             createDiv.classList.add("form");
-            
-//             const form = document.createElement("form");
-//             createDiv.appendChild(form);
+    const linkZap = `https://wa.me/${number}?text=${message}`;
 
-//             const label = document.createElement("label");
-//             form.appendChild(label);
+    window.open(linkZap);
 
-//             const input1 = document.createElement("input");
-//             form.appendChild(input1);
+    cart = [];
+    atualizarCart();
+    salvarStorage();
 
-//             const label2 = document.createElement("label");
-//             form.appendChild(label2)
-
-
-
-// }
+    const modal = bootstrap.modal;
+}
 
 // Função para exibir o carrinho de compras
 document.getElementById("cart-icon").addEventListener("click", () => {
