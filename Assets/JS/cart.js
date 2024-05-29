@@ -117,34 +117,40 @@ function mostrarFormulario() {
 
 // finalizar as compras 
 function comprar() {
+    const btn = document.getElementById("confirm-btn");
     const name = document.getElementById("user-name").value;
     const addres = document.getElementById("user-address").value;
-    // console.log("nome = ", name)
-    // console.log("endereço = ", addres)
+    const payment = document.getElementById("payment").value;
 
-    if(!name || !addres) {
-        alert("Por favor, preencha os dados solicitados!");
+    if(!name || !addres || !payment) {
+        alert("Por favor, preencha todos os dados solicitados!");
         return
     }
 
     const number = "5561998701721";
-    let message = `Olá! Me chamo ${name}, resido no ndereço: ${addres}. %0A Comprei os seguintes produtos no seu Supermercado: `;
+    let message = `Olá! Me chamo ${name}, resido no ndereço: ${addres}. %0AComprei os seguintes produtos no seu Supermercado: `;
 
     cart.forEach(item => {
-        message += `${item.nome} - R$${item.preco} x ${item.quantidade}\n`;
+        message += `${item.nome} - R$${item.preco} x ${item.quantidade},%0A`;
     });
 
-    message += `\nTotal - R$${document.getElementById("cart-total").innerText}.%0A Gostaria que fossem entregues no meu endereço, desde já, agradeço!`;
+    message += `\nTotal - R$${document.getElementById("cart-total").innerText}.%0AA forma de pagamento é no ${payment} e gostaria que fossem entregues no meu endereço, desde já, agradeço!`;
     
     const linkZap = `https://wa.me/${number}?text=${message}`;
 
     window.open(linkZap);
 
+    // desabilita o botão após a compra
+    btn.disabled = true;
+    // caso queira habilitar o botão novamente após um tempo
+    // setTimeout(() => {
+    //     btn.disabled = false;
+    // }, 15000);
+
     cart = [];
     atualizarCart();
     salvarStorage();
 
-    const modal = bootstrap.modal;
 }
 
 // Função para exibir o carrinho de compras
