@@ -16,6 +16,10 @@ header nav {
     font-family: "Roboto Slab", serif;
 }
 
+h2 {
+    font-family: "Roboto Slab", serif;
+}
+
 h3 {
     font-family: "Roboto Slab", serif;
 }
@@ -32,7 +36,7 @@ a {
     font-family: "Roboto Slab", serif;
 }
 
-/* Ajustar altura da imagem no carrossel */
+/* Ajustar altura da imagem no carrossel */ 
 .img img {
     height: 70vh;
     margin-top: 150px;
