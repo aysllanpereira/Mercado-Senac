@@ -105,7 +105,7 @@ const cartStorage = localStorage.getItem("cart");
         atualizarCart();
     }
 }
-
+// após carregar a página, carrega o localstorage
 window.onload = jogarNoLocalStorage;
 
 // mostrar o formulário de nome e endereço
@@ -116,15 +116,16 @@ function mostrarFormulario() {
 }
 
 // finalizar as compras 
-function comprar() {
+async function comprar() {
     const btn = document.getElementById("confirm-btn");
     const name = document.getElementById("user-name").value;
     const addres = document.getElementById("user-address").value;
     const payment = document.getElementById("payment").value;
+    const alertInfo = document.getElementById("alertInfo");
 
-    if(!name || !addres || !payment) {
-        alert("Por favor, preencha todos os dados solicitados!");
-        return
+    if(name === "" || addres === "" || payment === "") {
+        alertInfo.style.display = "block";
+        return;
     }
 
     const number = "5561998701721";
@@ -138,7 +139,11 @@ function comprar() {
     
     const linkZap = `https://wa.me/${number}?text=${message}`;
 
-    window.open(linkZap);
+    const successCompra = await finish();
+
+    if(successCompra) {
+        window.open(linkZap);
+    }
 
     // desabilita o botão após a compra
     btn.disabled = true;
@@ -154,10 +159,15 @@ function comprar() {
 
 }
 
+// função para jogar a compra finalizada no banco
 async function finish() {
     const name = document.getElementById("user-name").value;
     const addres = document.getElementById("user-address").value;
     const payment = document.getElementById("payment").value;
+    const alertSuccess = document.getElementById("alertSuccess");
+    const alertErro = document.getElementById("alertErro");
+    const alertInfo = document.getElementById("alertInfo");
+
 
     const pedido = {
         name,
@@ -166,8 +176,9 @@ async function finish() {
         carrinho: cart
     }
 
-    console.log(JSON.stringify(pedido))
+    // console.log(JSON.stringify(pedido))
     try {
+        
         const response = await fetch('http://localhost:3000/api/pedido', {
             method: 'POST',
             headers: {
@@ -177,15 +188,18 @@ async function finish() {
         });
         
         if(response.ok) {
-            alert("Ok, deu certo");
+            alertInfo.style.display = "none";
+            alertSuccess.style.display = "block";
+            return true;
         } else {
-            console.log(JSON.stringify(pedido))
-            alert("Deu ruim de novo, mané");
+            // console.log(JSON.stringify(pedido))
+            alertErro.style.display = "block";
+            return false;
         }
     } catch (error) {
-        console.log("Deu ruim, mané", error);
-
-        
+        console.log("Erro, verifique e tente novamente", error);
+        alertErro.style.display = "block";
+        return false;
     }
 }
 
