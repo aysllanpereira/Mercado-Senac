@@ -1,5 +1,5 @@
 // inicia vazio
-let cart = [];
+var cart = [];
 
 // Função para adicionar produto ao carrinho
 function addProd(button) {
@@ -143,14 +143,50 @@ function comprar() {
     // desabilita o botão após a compra
     btn.disabled = true;
     // caso queira habilitar o botão novamente após um tempo
-    // setTimeout(() => {
-    //     btn.disabled = false;
-    // }, 15000);
-
+    setTimeout(() => {
+        btn.disabled = false;
+    }, 15000);
+    
+    finish();
     cart = [];
     atualizarCart();
     salvarStorage();
 
+}
+
+async function finish() {
+    const name = document.getElementById("user-name").value;
+    const addres = document.getElementById("user-address").value;
+    const payment = document.getElementById("payment").value;
+
+    const pedido = {
+        name,
+        addres,
+        payment,
+        carrinho: cart
+    }
+
+    console.log(JSON.stringify(pedido))
+    try {
+        const response = await fetch('http://localhost:3000/api/pedido', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(pedido)
+        });
+        
+        if(response.ok) {
+            alert("Ok, deu certo");
+        } else {
+            console.log(JSON.stringify(pedido))
+            alert("Deu ruim de novo, mané");
+        }
+    } catch (error) {
+        console.log("Deu ruim, mané", error);
+
+        
+    }
 }
 
 // Função para exibir o carrinho de compras
