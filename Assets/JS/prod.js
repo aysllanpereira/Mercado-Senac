@@ -1,5 +1,5 @@
 // url da api
-const apiURL = "http://localhost:3000/api/produto";
+const apiURL = "https://mercado-senac.azurewebsites.net/api/produto";
 
 // função para pesquisar o produto
 async function pesquisarProduto() {
