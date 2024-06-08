@@ -85,9 +85,9 @@ a {
 .loc {
     margin-top: 50px;
     margin-bottom: 50px;
-    background-color: #f0f8ff; /* Escolha a cor de fundo desejada */
-    padding: 20px; /* Opcional: adiciona algum espaçamento interno */
-    border-radius: 8px; /* Opcional: adiciona cantos arredondados */
+    background-color: #f0f8ff; 
+    padding: 20px; 
+    border-radius: 8px; 
     
 }
 
