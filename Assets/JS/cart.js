@@ -178,8 +178,8 @@ async function finish() {
 
     // console.log(JSON.stringify(pedido))
     try {
-        
-        const response = await fetch('http://localhost:3000/api/pedido', {
+        // https://mercado-senac.azurewebsites.net/api/produto || http://localhost:3000/api/pedido
+        const response = await fetch('https://mercado-senac.azurewebsites.net/api/pedido', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
